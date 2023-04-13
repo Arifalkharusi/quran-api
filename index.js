@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8080;
 
 app.get("/", async (req, res) => {
   const data = await Quran.findOne({ name: req.query.surah });
-  res.json(data);
+  res.send(data);
 });
 app.post("/create", async (req, res) => {
   const response = await fetch(
