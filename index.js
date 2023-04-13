@@ -9,6 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.get("/", async (req, res) => {
+  res.send("hello world");
   const data = await Quran.findOne({ name: req.query.surah });
   res.json(data);
 });
