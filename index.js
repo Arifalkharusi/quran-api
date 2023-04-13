@@ -8,7 +8,7 @@ mongoose.connect(process.env.mongobduri);
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.get("/", async (req, res) => {
+app.get("/surah", async (req, res) => {
   const data = await Quran.findOne({ name: req.query.surah });
   res.send(data);
 });
