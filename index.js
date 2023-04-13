@@ -1,15 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
+import * as dotenv from "dotenv";
+dotenv.config();
 import Quran from "./Schima.js";
-mongoose.connect(
-  "mongodb+srv://arifalkharusi:arifalkharusi@test.icmrhkc.mongodb.net/quran?retryWrites=true&w=majority"
-);
+mongoose.connect(process.env.mongobduri);
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.get("/", async (req, res) => {
-  res.send("hello world");
   const data = await Quran.findOne({ name: req.query.surah });
   res.json(data);
 });
