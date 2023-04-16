@@ -3,6 +3,16 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 dotenv.config();
 import Quran from "./Schima.js";
+
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.mongobduri);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
 mongoose.connect(process.env.mongobduri);
 
 const app = express();
@@ -19,6 +29,8 @@ app.get("/surah", async (req, res) => {
   res.json(data);
 });
 
-app.listen(PORT, () => {
-  console.log(`server running at http://localhost:${PORT}`);
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log("listening for requests");
+  });
 });
