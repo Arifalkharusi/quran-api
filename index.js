@@ -13,8 +13,6 @@ const connectDB = async () => {
   }
 };
 
-mongoose.connect(process.env.mongobduri);
-
 const app = express();
 const PORT = process.env.PORT || 8080;
 
