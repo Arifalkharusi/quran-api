@@ -6,7 +6,7 @@ import Quran from "./Schima.js";
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.mongobduri);
+    const conn = await mongoose.connect(process.env.MONGO_CONNECTION);
   } catch (error) {
     console.log(error);
     process.exit(1);
